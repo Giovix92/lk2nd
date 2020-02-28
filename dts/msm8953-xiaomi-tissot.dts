@@ -1,0 +1,61 @@
+/*
+ * Copyright (c) 2015-2017, The Linux Foundation. All rights reserved.
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
+
+/dts-v1/;
+
+/include/ "msm8953.dtsi"
+
+/ {
+	// Define the model, id and board-id
+	qcom,msm-id = <293 0x0>;
+	qcom,board-id= <0x1000b 0>;
+	
+	model = "Xiaomi Mi A1 (tissot)";
+	compatible = "qcom,msm8953-qrd-sku3", "qcom,msm8953-qrd", "qcom,msm8953", "qcom,qrd", "xiaomi,tissot", "lk2nd,device";
+	
+	// Define ranges
+	soc {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges = <0x0 0x0 0x0 0xffffffff>;
+		
+		qcom,memshare {
+			compatible = "qcom,memshare";
+			
+			qcom,client_1 {
+				compatible = "qcom,memshare-peripheral";
+				qcom,peripheral-size = <0x200000>;
+				qcom,client-id = <0>;
+				qcom,allocate-boot-time;
+				label = "modem";
+			};
+
+			qcom,client_2 {
+				compatible = "qcom,memshare-peripheral";
+				qcom,peripheral-size = <0x300000>;
+				qcom,client-id = <2>;
+				label = "modem";
+			};
+
+			qcom,client_3 {
+				compatible = "qcom,memshare-peripheral";
+				qcom,peripheral-size = <0x500000>;
+				qcom,client-id = <1>;
+				qcom,allocate-boot-time;
+				label = "modem";
+			};
+		};
+	};
+	
+	reserved-memory {
+		pstore_reserve_mem: pstore_reserve_mem_region@0 {
+			linux,reserve-contiguous-region;
+			linux,reserve-region;
+			linux,remove-completely;
+			reg = <0x0 0x9ff00000 0x0 0x00100000>;
+			label = "pstore_reserve_mem";
+		};
+	};
+};

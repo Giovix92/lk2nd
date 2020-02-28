@@ -27,6 +27,7 @@ and then loaded by lk2nd.
 - Wileyfox Swift
 - Samsung Galaxy A6+ (2018) HW.Rev.4
 - Xiaomi Redmi Note 4X Snapdragon - mido
+- Xiaomi Mi A1 - tissot
 
 ## Installation
 1. Download `lk2nd.img` (available in [Releases](https://github.com/msm8916-mainline/lk2nd/releases)(MSM8916))
